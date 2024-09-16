@@ -1,7 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContex } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+    const {user, logOut } = useContext(AuthContex);
+    const handelSignOut = () =>{
+        logOut()
+        .then()
+        .catch()
+    }
   const activeNavlinks = (
     <div className="flex gap-10">
       <NavLink
@@ -65,7 +73,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{activeNavlinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <button onClick={handelSignOut}>Log Out</button>
+        ) : (
+          <Link to="/login">
+            <button>Log In</button>
+          </Link>
+        )}
       </div>
     </div>
   );
