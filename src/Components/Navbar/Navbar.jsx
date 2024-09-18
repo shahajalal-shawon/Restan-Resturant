@@ -77,7 +77,7 @@ const Navbar = () => {
           <button onClick={handelSignOut}>Log Out</button>
         ) : (
           <Link to="/login">
-            <button>Log In</button>
+            <button className="btn bg-orange-600 hover:bg-orange-700">Log In</button>
           </Link>
         )}
       </div>
